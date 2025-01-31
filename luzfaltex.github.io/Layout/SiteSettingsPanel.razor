@@ -1,0 +1,57 @@
+﻿@using luzfaltex.github.io.Models
+@using Microsoft.FluentUI.AspNetCore.Components.Extensions;
+
+@implements IDialogContentComponent
+
+<div>
+    <FluentDesignTheme @ref="@_theme"
+                       @bind-Mode="@Mode"
+                       @bind-CustomColor="@CustomColor"
+                       StorageName="theme" />
+    
+    <FluentStack Orientation="Orientation.Vertical" VerticalGap="30">
+        <FluentSelect Label="Theme"
+                      Width="100%"
+                      Items="@AllModes"
+                      @bind-SelectedOption="@Mode" />
+
+        <FluentSelect Label="Color"
+                      Items="@AllColors"
+                      Width="100%"
+                      Height="200px"
+                      OptionValue="@(it => it.ToAttributeValue())"
+                      @bind-Value="@CustomColor">
+            <OptionTemplate>
+                <FluentStack>
+                    <FluentIcon Value="@(new Icons.Filled.Size20.RectangleLandscape())"
+                                Color="Color.Custom"
+                                CustomColor="@GetCustomColor(context)" />
+                    <FluentLabel>@context</FluentLabel>
+                </FluentStack>
+            </OptionTemplate>
+        </FluentSelect>
+    </FluentStack>
+</div>
+
+@code {
+    
+    private FluentDesignTheme? _theme;
+
+    private DesignThemeModes Mode { get; set; }
+
+    private string? CustomColor { get; set; } = Constants.LuzFaltexOrange;
+
+    private static IEnumerable<DesignThemeModes> AllModes => Enum.GetValues<DesignThemeModes>();
+
+    private static IEnumerable<CustomColors> AllColors => Enum.GetValues<CustomColors>();
+    
+    private static string? GetCustomColor(CustomColors? color)
+    {
+        return color switch
+        {
+            null => OfficeColorUtilities.GetRandom(true).ToAttributeValue(),
+            CustomColors.Default => Constants.LuzFaltexOrange,
+            _ => color.ToAttributeValue(),
+        };
+    }
+}

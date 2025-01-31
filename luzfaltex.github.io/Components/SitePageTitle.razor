@@ -1,0 +1,7 @@
+﻿<PageTitle>@ChildContent @Suffix</PageTitle>
+@code {
+    private const string Suffix = "-- LuzFaltex";
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

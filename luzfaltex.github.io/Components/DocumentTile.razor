@@ -1,0 +1,20 @@
+﻿<a class="tile-anchor" href="@Href" style="max-width: 250px">
+    <FluentCard MinimalStyle="true">
+        <FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Center">
+            <FontAwesomeIcon Class="fa-light fa-scale-unbalanced fa-4x"></FontAwesomeIcon>
+            <FluentLabel Typo="Typography.PaneHeader">@Title</FluentLabel>
+            <FluentLabel Typo="Typography.Body">@Description</FluentLabel>
+        </FluentStack>
+    </FluentCard>
+</a>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    
+    [Parameter]
+    public string Description { get; set; }
+    
+    [Parameter]
+    public string Href { get; set; }
+}

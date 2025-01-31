@@ -1,0 +1,52 @@
+﻿@using System.Runtime.CompilerServices
+
+@using Constants = luzfaltex.github.io.Constants
+
+@inject NavigationManager NavigationManager
+
+@inherits LayoutComponentBase
+
+<FluentLayout>
+    <FluentHeader Class="site-header">
+        LuzFaltex
+        <FluentSpacer />
+        <div class="links">
+            <!-- <GitHubButton /> -->
+        </div>
+        <div class="settings">
+            <SiteSettings />
+        </div>
+    </FluentHeader>
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+        <NavMenu/>
+        <FluentBodyContent Class="body-content">
+            <ErrorBoundary>
+                <ChildContent>
+                    <div class="content">
+                        <FluentMessageBarProvider Section="@Constants.MesssageBarTop"/>
+                        @Body
+                    </div>
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <div class="blazor-error-boundary">@ex.Message</div>
+                </ErrorContent>
+            </ErrorBoundary>
+        </FluentBodyContent>
+    </FluentStack>
+    <FluentFooter>
+        <SiteFooter />
+    </FluentFooter>
+</FluentLayout>
+
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
+<FluentMenuProvider />
+
+<script src="_content/Microsoft.FluentUI.AspNetCore.Components/js/loading-theme.js" type="text/javascript"></script>
+<loading-theme storage-name="theme"></loading-theme>
+
+@code {
+
+}

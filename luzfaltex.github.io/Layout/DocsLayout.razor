@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@layout MainLayout
+
+<FluentStack Orientation="Orientation.Horizontal">
+    <CascadingValue Value="OnRefreshTableOfContents">
+        <article id="article" style="flex-grow: 1">
+            @Body
+        </article>
+    </CascadingValue>
+    <aside style="min-width: 250px">
+        <TableOfContents @ref="_toc" />
+    </aside>
+</FluentStack>
+
+@code {
+    private TableOfContents? _toc;
+
+    public EventCallback OnRefreshTableOfContents => EventCallback.Factory.Create(this, RefreshTableOfContents);
+
+    private async Task RefreshTableOfContents()
+    {
+        await _toc!.Refresh();
+    }
+}

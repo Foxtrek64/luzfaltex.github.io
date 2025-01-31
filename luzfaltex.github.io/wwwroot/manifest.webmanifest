@@ -1,0 +1,17 @@
+{
+  "name": "luzfaltex.github.io",
+  "short_name": "luzfaltex.github.io",
+  "id": "./",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF4700",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "256x256, 512x512"
+    }
+  ]
+}

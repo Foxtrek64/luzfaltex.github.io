@@ -1,0 +1,26 @@
+﻿<FluentCard MinimalStyle="true">
+    <FluentStack Orientation="Orientation.Horizontal">
+        <FluentIcon Icon="@Icon" Color="IconColor" CustomColor="@CustomIconColor" />
+        <FluentStack Orientation="Orientation.Vertical">
+            <FluentLabel Typo="Typography.PaneHeader">@Title</FluentLabel>
+            @ChildContent
+        </FluentStack>
+    </FluentStack>
+</FluentCard>
+
+@code {
+    [Parameter]
+    public Icon Icon { get; set; }
+    
+    [Parameter]
+    public Color IconColor { get; set; }
+    
+    [Parameter]
+    public string? CustomIconColor { get; set; }
+    
+    [Parameter]
+    public string Title { get; set; }
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

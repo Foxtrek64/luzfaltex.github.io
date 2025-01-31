@@ -1,0 +1,34 @@
+﻿@page "/docs"
+
+<SitePageTitle>Documentation</SitePageTitle>
+
+<h1>Documentation</h1>
+
+<h2>Docs</h2>
+<FluentGrid>
+    @foreach (var tile in DocumentationTiles)
+    {
+        <FluentGridItem xs="12" xl="3">
+            <DocumentTile Title="@tile.Title" Description="@tile.Description" Href="@tile.Href" />
+        </FluentGridItem>
+    }
+</FluentGrid>
+
+<h2>Policies</h2>
+<FluentGrid>
+    @foreach (var tile in PolicyTiles)
+    {
+        <FluentGridItem xs="12" xl="3">
+            <DocumentTile Title="@tile.Title" Description="@tile.Description" Href="@tile.Href" />
+        </FluentGridItem>
+    }
+</FluentGrid>
+
+@code {
+    public IEnumerable<DocumentTile> DocumentationTiles = [];
+
+    public IEnumerable<DocumentTile> PolicyTiles =
+    [
+        new() { Title = "Code of Conduct", Description = string.Empty, Href = "policies/conduct" }
+    ];
+}

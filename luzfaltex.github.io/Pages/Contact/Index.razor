@@ -1,0 +1,33 @@
+﻿@page "/contact"
+@using luzfaltex.github.io.Models
+@inject IMessageService MessageService
+
+<SitePageTitle>Contact Us</SitePageTitle>
+
+<h1>How can we help you?</h1>
+
+@code {
+    [SupplyParameterFromQuery]
+    private bool? MessageSent { get; set; }
+    
+    private GeneralContactForm GeneralContactForm { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && MessageSent is { } success)
+        {
+            string message = success ? "Message sent successfully!" : "Message failed to send.";
+            MessageIntent intent = success ? MessageIntent.Success : MessageIntent.Error;
+            await MessageService.ShowMessageBarAsync(options =>
+            {
+                options.Title = message;
+                options.Intent = intent;
+                options.Section = Constants.MesssageBarTop;
+                options.Timestamp = DateTime.Now;
+            });
+        }
+        
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+}

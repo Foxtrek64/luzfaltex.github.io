@@ -1,0 +1,49 @@
+﻿@using luzfaltex.github.io.Models
+@implements IDialogContentComponent<luzfaltex.github.io.Models.GeneralContactForm>
+
+<FluentDialogBody>
+    <FluentDataGrid GenerateHeader="GenerateHeaderOption.None"
+                    Items="GridData.AsQueryable()"
+                    GridTemplateColumns="1fr 1fr"
+                    TGridItem="GridRow"
+                    role="grid"
+                    RowSize="@DataGridRowSize.Medium">
+        <TemplateColumn Title="Name">
+            <FluentTextField @bind-Value="@context.Name"/>
+        </TemplateColumn>
+        <TemplateColumn Title="Value">
+            <FluentTextField @bind-Value="@context.Value"/>
+        </TemplateColumn>
+    </FluentDataGrid>
+</FluentDialogBody>
+
+@code {
+    [Parameter]
+    public GeneralContactForm Content { get; set; }
+    
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; }
+
+    protected override Task OnParametersSetAsync()
+    {
+        GridData =
+        [
+            new GridRow("Name", Content.Name),
+            new GridRow("Email", Content.Email),
+            new GridRow("Type", Content.Type),
+            new GridRow("Priority", Content.Priority),
+            new GridRow("Subject", Content.Subject),
+            new GridRow("Message", Content.Message)
+        ];
+        return base.OnParametersSetAsync();
+    }
+
+    private List<GridRow> GridData;
+
+    public sealed class GridRow(string name, string value)
+    {
+        public string Name { get; set; } = name;
+        public string Value { get; set; } = value;
+    }
+
+}

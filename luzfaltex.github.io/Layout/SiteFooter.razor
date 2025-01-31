@@ -1,0 +1,26 @@
+﻿<FluentStack Orientation="Orientation.Vertical" VerticalGap="0">
+    <FluentLabel Typo="Typography.Body">Documentation licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC NC-BY 4.0</a> except where otherwise noted.</FluentLabel>
+    <FluentLabel Typo="Typography.Body">All other content copyright &copy; LuzFaltex, LLC 2014-@Year, all rights reserved.</FluentLabel>
+</FluentStack>
+<FluentSpacer />
+
+<FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Center">
+    <nav>
+        <ul class="inline">
+            <li><a href="/policies/privacy">Privacy Policy</a></li>
+            <li><a href="/policies/terms">TACOS</a></li>
+            <li><a href="/docs/logos">Logos</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</FluentStack>
+<FluentSpacer />
+
+<FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.End" VerticalGap="0">
+    <FluentLabel Typo="Typography.Body" Color="Color.Neutral">Powered by <a href="https://www.fluentui-blazor" target="_blank" rel="noopener">Fluent UI Blazor</a> and <a href="https://www.nearlyfreespeech.net/" target="_blank" rel="noopener">NearlyFreeSpeech.NET</a>.</FluentLabel>
+    <FluentLabel Typo="Typography.Body" Color="Color.Neutral">Built by our <a href="https://github.com/LuzFaltex/luzfaltex.github.io/graphs/contributors" target="_blank" rel="noopener">wonderful contributors.</a></FluentLabel>    
+</FluentStack>
+
+@code {
+    private int Year => DateTimeOffset.Now.Year;
+}

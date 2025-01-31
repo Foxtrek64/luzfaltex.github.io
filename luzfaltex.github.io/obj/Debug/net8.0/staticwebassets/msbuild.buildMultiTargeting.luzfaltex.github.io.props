@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\luzfaltex.github.io.props" />
+</Project>

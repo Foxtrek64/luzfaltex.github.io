@@ -1,0 +1,124 @@
+﻿@page "/contact/support"
+@using luzfaltex.github.io.Models
+
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager
+
+<SitePageTitle>Support</SitePageTitle>
+
+<h1>Contact Us</h1>
+
+<EditForm Model="@GeneralContactForm" OnValidSubmit="HandleValidSubmitAsync" FormName="general_contact_form">
+    <DataAnnotationsValidator />
+    <FluentValidationSummary />
+    
+    <FluentStack Orientation="Orientation.Vertical">
+        <FluentTextField Name="name" @bind-Value="GeneralContactForm.Name" Required>Your Name</FluentTextField>
+        <FluentValidationMessage For="@(() => GeneralContactForm.Name)" />
+
+        <FluentTextField Name="email" @bind-Value="GeneralContactForm.Email" Required Label="Please provide contact email so we can get back to you." TextFieldType="TextFieldType.Email">Email Address</FluentTextField>
+        <FluentValidationMessage For="@(() => GeneralContactForm.Email)" />
+
+        <FluentSelect Name="type" @bind-Value="GeneralContactForm.Type" TOption="string" Required Label="What is the nature of your inquiry?">
+            <FluentOption Value="">Select option...</FluentOption>
+            <FluentOption Value="General Inquiry or Recommendation">General Inquiry or Recommendation</FluentOption>
+            <FluentOption Value="Press Inquiry">Press Inquiry</FluentOption>
+            <FluentOption Value="Contact Webmaster">Contact Webmaster</FluentOption>
+            <FluentOption Value="Policy Question">Policy Question</FluentOption>
+            <FluentOption Value="Billing">Billing</FluentOption>
+            <FluentOption Value="Report Code of Conduct Violation">Report Code of Conduct Violation</FluentOption>
+            <FluentOption Value="Staff Application">Staff Application</FluentOption>
+            <FluentOption Value="DMCA Concern">DMCA Concern</FluentOption>
+            <FluentOption Value="Trademark Concern">Trademark Concern</FluentOption>
+        </FluentSelect>
+        <FluentValidationMessage For="@(() => GeneralContactForm.Type)" />
+        
+        @switch (GeneralContactForm.Type)
+        {
+            case "":
+                // Show nothing
+                break;
+            case "Staff Application":
+                <FluentLabel Typo="Typography.Body">Thank you for your interest in working with us! If you're interested in applying, please use our dedicated <FluentAnchor Href="#" Appearance="Appearance.Hypertext">Staff Application Form</FluentAnchor>.</FluentLabel>
+                break;
+            case "DMCA Concern":
+                <FluentLabel Typo="Typography.Body">For more information about our DMCA process, including submitting claims and counter-claims, see our <FluentAnchor Href="/contact/dmca" Appearance="Appearance.Hypertext">Copyright Center</FluentAnchor>.</FluentLabel>
+                break;
+            case "Trademark Concern":
+                <FluentLabel Typo="Typography.Body">For more information about or Trademark process, including submitting Trademark claims, see our <FluentAnchor Href="/contact/trademark" Appearance="Appearance.Hypertext">Trademark Center</FluentAnchor>.</FluentLabel>
+                break;
+            default:
+                <FluentSelect Name="priority" @bind-Value="GeneralContactForm.Priority" TOption="string" Required Label="Priority">
+                    <FluentOption Value="">Select priority...</FluentOption>__TOption
+                    <FluentOption Value="low">Low (general questions, comments, or feedback)</FluentOption>__TOption
+                    <FluentOption Value="medium">Medium (billing questions, legal inquiries)</FluentOption>__TOption
+                    <FluentOption Value="high">High (billing issues, legal contact)</FluentOption>__TOption
+                    <FluentOption Value="critical">Critical (urgent issues)</FluentOption>__TOption
+                </FluentSelect>
+                <FluentValidationMessage For="@(() => GeneralContactForm.Type)" />
+                
+                <FluentTextField Name="subject" @bind-Value="GeneralContactForm.Subject" Required>Subject</FluentTextField>
+                <FluentValidationMessage For="@(() => GeneralContactForm.Subject)" />
+                
+                <FluentTextArea Name="message" @bind-Value="GeneralContactForm.Message" Style="width: 100%;" Rows="12" Required>Message</FluentTextArea>
+                <FluentValidationMessage For="@(() => GeneralContactForm.Message)" />
+                
+                <FluentCheckbox Name="notSpam" @bind-Value="GeneralContactForm.NotSpam" Required Label="The above content does not constitute an ad or spam."></FluentCheckbox>
+                <FluentValidationMessage For="@(() => GeneralContactForm.NotSpam)" />
+                
+                <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" Loading="_loading">Submit</FluentButton>
+                break;
+        }
+    </FluentStack>
+</EditForm>
+
+@code {
+
+    private bool _loading;
+    
+    protected override void OnInitialized()
+    {
+        GeneralContactForm.SubmittedAt = DateTimeOffset.Now;
+    }
+    
+    [SupplyParameterFromForm]
+    private GeneralContactForm GeneralContactForm { get; set; } = new();
+
+    private async Task HandleValidSubmitAsync()
+    {
+        _loading = true;
+        var result = await ShowConfirmationAsync();
+        if (!result.Cancelled)
+        {
+            await SendEmailAsync();
+            NavigationManager.NavigateTo("/contact?messageSent=true");
+        }
+        _loading = false;
+    }
+
+    private async Task<DialogResult> ShowConfirmationAsync()
+    {
+        DialogParameters<GeneralContactForm> parameters = new()
+        {
+            Title = "Confirm",
+            PrimaryAction = "Send",
+            PrimaryActionEnabled = true,
+            SecondaryAction = "Go back",
+            SecondaryActionEnabled = true,
+            Width = "500px",
+            Height = "500px",
+            Content = GeneralContactForm,
+            TrapFocus = true,
+            Modal = true
+        };
+
+        var dialog = await DialogService.ShowDialogAsync<ContactFormDialog, GeneralContactForm>(parameters);
+        return await dialog.Result;
+    }
+
+    private async Task SendEmailAsync()
+    {
+        await Task.Delay(2000);
+    }
+
+}

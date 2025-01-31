@@ -1,0 +1,23 @@
+﻿@inject NavigationManager NavigationManager
+
+<FluentAnchor Appearance="Appearance.Outline"
+              Href="@EditButtonUrl" Target="_blank" Rel="noreferrer noopener"
+              Title="Opens a link to the GitHub url for the source code of this page." aria-label="Edit this page"
+              IconStart="@(new Icons.Regular.Size20.Edit())">
+    Edit this page
+</FluentAnchor>
+
+@code {
+    protected override void OnInitialized()
+    {
+        EditButtonUrl = $"{Constants.GitHubBaseUrl}{GetCurrentUrlSlug()}";
+        base.OnInitialized();
+    }
+
+    private string GetCurrentUrlSlug()
+    {
+        return NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+    }
+
+    public string EditButtonUrl { get; set; }
+}

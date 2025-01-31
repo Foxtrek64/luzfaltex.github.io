@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\Components\\MarkdownSection.razor.js",
+      "PackagePath": "staticwebassets\\Components\\MarkdownSection.razor.js"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\Components\\TableOfContents.razor.js",
+      "PackagePath": "staticwebassets\\Components\\TableOfContents.razor.js"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\obj\\Debug\\net8.0\\scopedcss\\bundle\\luzfaltex.github.io.styles.css",
+      "PackagePath": "staticwebassets\\luzfaltex.github.io.styles.css"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\app.ts",
+      "PackagePath": "staticwebassets\\app.ts"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\docs\\CodeOfConduct.md",
+      "PackagePath": "staticwebassets\\docs\\CodeOfConduct.md"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\favicon.svg",
+      "PackagePath": "staticwebassets\\favicon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\images\\logoBeta.png",
+      "PackagePath": "staticwebassets\\images\\logoBeta.png"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\images\\logoDark.png",
+      "PackagePath": "staticwebassets\\images\\logoDark.png"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\images\\logoLight.png",
+      "PackagePath": "staticwebassets\\images\\logoLight.png"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\images\\logoOrange.png",
+      "PackagePath": "staticwebassets\\images\\logoOrange.png"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\images\\logoRavenRock.png",
+      "PackagePath": "staticwebassets\\images\\logoRavenRock.png"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\manifest.webmanifest",
+      "PackagePath": "staticwebassets\\manifest.webmanifest"
+    },
+    {
+      "Id": "D:\\Projects\\apps\\LuzFaltex\\luzfaltex.github.io\\luzfaltex.github.io\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.luzfaltex.github.io.props",
+      "PackagePath": "build\\luzfaltex.github.io.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.luzfaltex.github.io.props",
+      "PackagePath": "buildMultiTargeting\\luzfaltex.github.io.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.luzfaltex.github.io.props",
+      "PackagePath": "buildTransitive\\luzfaltex.github.io.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.luzfaltex.github.io.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.luzfaltex.github.io.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
